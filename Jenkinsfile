@@ -57,6 +57,14 @@ pipeline {
             }
         }
 
+        stage('AWS Authentication Test') {
+            steps {
+                script {
+                    awsRun "aws sts get-caller-identity"
+                }
+            }
+        }
+
         stage('Push') {
             steps {
                 script {
